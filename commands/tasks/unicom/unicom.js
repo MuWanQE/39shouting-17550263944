@@ -97,6 +97,15 @@ var start = async (params) => {
     },
     taskOption
   );
+  
+    // 每日抽奖
+  await scheduler.regTask(
+    "dailylotteryintegral",
+    async (request) => {
+      await require("./dailylotteryintegral").doTask(request, options);
+    },
+    taskOption
+  );
 
   // 每日评论积分
   await scheduler.regTask(
